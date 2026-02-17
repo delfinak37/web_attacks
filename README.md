@@ -141,13 +141,8 @@
 
 Была проведена разведка:
 
-<div align="center">
-  <img width="485" height="172" alt="изображение" src="https://github.com/user-attachments/assets/e33ee834-b4b6-46d3-8725-c362de96b50e" />
-</div>
-
-<div align="center">
-  <img width="651" height="276" alt="изображение" src="https://github.com/user-attachments/assets/e08eaea6-92e8-4153-a028-52ede67c36f6" />
-</div>
+<img width="485" height="172" alt="изображение" src="https://github.com/user-attachments/assets/e33ee834-b4b6-46d3-8725-c362de96b50e" /><br>
+<img width="651" height="276" alt="изображение" src="https://github.com/user-attachments/assets/e08eaea6-92e8-4153-a028-52ede67c36f6" />
 
 Перехватился GET-запрос с низкой защитой, также есть новым паролем, который ввел пользователь. Еще обнаружена прямая ссылка на смену пароля:
 
@@ -159,9 +154,7 @@ http://localhost:8080/vulnerabilities/csrf/?password_new=hacked&password_conf=ha
 
 Пароль изменится на hacked без какого-либо подтверждения:
 
-<div align="center">
-  <img width="608" height="321" alt="изображение" src="https://github.com/user-attachments/assets/ef279b44-bfe9-4995-b8dd-959157bdcf8d" />
-</div>
+<img width="608" height="321" alt="изображение" src="https://github.com/user-attachments/assets/ef279b44-bfe9-4995-b8dd-959157bdcf8d" />
 
 В реальности же злоумышленник создаёт вредоносную страницу. И если жертва авторизована и открывает эту страницу, то пароль меняется автоматически.
 
@@ -169,30 +162,20 @@ http://localhost:8080/vulnerabilities/csrf/?password_new=hacked&password_conf=ha
 
 Следующим шагом решил выполнил BruteForce атаку. Произвел разведку системы. В GET-запросе отсутствуют механизмы защиты:
 
-<div align="center">
-  <img width="322" height="188" alt="изображение" src="https://github.com/user-attachments/assets/c1457cc3-ec81-4921-a176-a3ee6626d6c9" />
-</div><br>
-<div align="center">
-  <img width="608" height="323" alt="изображение" src="https://github.com/user-attachments/assets/5ecb571e-e96a-42d6-912d-84955c8bdb65" />
-</div>
+<img width="322" height="188" alt="изображение" src="https://github.com/user-attachments/assets/c1457cc3-ec81-4921-a176-a3ee6626d6c9" /><br>
+<img width="608" height="323" alt="изображение" src="https://github.com/user-attachments/assets/5ecb571e-e96a-42d6-912d-84955c8bdb65" />
 
 Для перебора использован Intruder в BurpSuite:
 
-<div align="center">
-  <img width="511" height="428" alt="изображение" src="https://github.com/user-attachments/assets/cd66679e-ed51-430d-b217-0109b940ff14" />
-</div>
+<img width="511" height="428" alt="изображение" src="https://github.com/user-attachments/assets/cd66679e-ed51-430d-b217-0109b940ff14" />
 
 Для фильтрации верной комбинации был указан параметр: Welcome to the password protected area – это строка, которая появляется после успешного входа в систему. При переборе предполагаемых логинов и паролей вышло только одно совпадение, которое и являлось верной комбинацией.
 
-<div align="center">
-  <img width="720" height="244" alt="изображение" src="https://github.com/user-attachments/assets/5faf7552-53b6-47e9-915e-d1231d9a53f1" />
-</div>
+<img width="720" height="244" alt="изображение" src="https://github.com/user-attachments/assets/5faf7552-53b6-47e9-915e-d1231d9a53f1" />
 
 ---
 
 ### Текущий прогресс
-
-<div align="center">
 
 | Уязвимость | Статус |
 |------------|:------:|
@@ -209,41 +192,29 @@ http://localhost:8080/vulnerabilities/csrf/?password_new=hacked&password_conf=ha
 | Брутфорс | ✅ |
 | Бесконтрольная загрузка файлов | ✅ |
 
-</div>
-
 ---
 
 ## Неправильная конфигурация и устаревшие компоненты
 
 Далее перешел по пути http://127.0.0.1:8080/phpinfo.php, и узнал какая версия php, какие модули и пути заданы на сайте, что, по сути, можно посчитать служебной утечкой:
 
-<div align="center">
-  <img width="723" height="440" alt="изображение" src="https://github.com/user-attachments/assets/6c408ae0-08d5-4d34-b161-b0e30d313b0b" />
-</div>
+<img width="723" height="440" alt="изображение" src="https://github.com/user-attachments/assets/6c408ae0-08d5-4d34-b161-b0e30d313b0b" />
 
 Также через nmap можно получить информацию о версии того же Apache используемого на сайте:
 
-<div align="center">
-  <img width="431" height="146" alt="изображение" src="https://github.com/user-attachments/assets/d06470cc-3d3f-49b1-a3c3-d2c50ed62964" />
-</div>
-
-<div align="center">
-  <img width="541" height="214" alt="изображение" src="https://github.com/user-attachments/assets/42c6b8ad-38a3-4c93-8e7c-e190e5a84cd4" />
-</div>
+<img width="431" height="146" alt="изображение" src="https://github.com/user-attachments/assets/d06470cc-3d3f-49b1-a3c3-d2c50ed62964" />
+  
+<img width="541" height="214" alt="изображение" src="https://github.com/user-attachments/assets/42c6b8ad-38a3-4c93-8e7c-e190e5a84cd4" />
 
 Зная версию веб-сервиса и его фреймворков, можно подобрать известные уязвимости, также nmap-ом - nmap -sV --script vuln -p 7070 localhost:
 
-<div align="center">
-  <img width="386" height="210" alt="изображение" src="https://github.com/user-attachments/assets/f442704c-e13b-44f4-98c0-f8d63efc11ea" />
-</div>
+<img width="386" height="210" alt="изображение" src="https://github.com/user-attachments/assets/f442704c-e13b-44f4-98c0-f8d63efc11ea" />
 
 ## Ошибки логирования и мониторинга
 
 После всех проведенных атак и подозрительной для обычного пользователя деятельности в логах сайта должно было что-то сохраниься:
 
-<div align="center">
-  <img width="713" height="438" alt="изображение" src="https://github.com/user-attachments/assets/cbb238af-1417-4628-9a7a-03452a79051b" />
-</div>
+<img width="713" height="438" alt="изображение" src="https://github.com/user-attachments/assets/cbb238af-1417-4628-9a7a-03452a79051b" />
 
 Однако проанализировав логи, можно прийти к заключению, что это обычные web-логи запросов, а не полноценные записи о событиях безопасности или атаках. То есть это значит:
 
@@ -255,8 +226,6 @@ http://localhost:8080/vulnerabilities/csrf/?password_new=hacked&password_conf=ha
 ---
 
 ## Итог
-
-<div align="center">
 
 | Уязвимость | Статус |
 |------------|:------:|
@@ -272,7 +241,5 @@ http://localhost:8080/vulnerabilities/csrf/?password_new=hacked&password_conf=ha
 | Подделка запросов | ✅ |
 | Брутфорс | ✅ |
 | Бесконтрольная загрузка файлов | ✅ |
-
-</div>
 
 ---
