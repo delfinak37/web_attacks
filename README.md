@@ -1,4 +1,4 @@
-<img width="608" height="323" alt="изображение" src="https://github.com/user-attachments/assets/5ecb571e-e96a-42d6-912d-84955c8bdb65" />## Лабораторная работа №1
+## Лабораторная работа №1
 
 По дисциплине: **«Информационная безопасность web-ресурсов»**  
 Тема: **«Атаки на веб-приложения»**
@@ -126,8 +126,8 @@ http://localhost:8080/vulnerabilities/csrf/?password_new=hacked&password_conf=ha
 
 Следующим шагом решил выполнил BruteForce атаку. Произвел разведку системы. В GET-запросе отсутствуют механизмы защиты:
 
-<img width="322" height="188" alt="изображение" src="https://github.com/user-attachments/assets/c1457cc3-ec81-4921-a176-a3ee6626d6c9" />
-<img width="463" height="387" alt="изображение" src="https://github.com/user-attachments/assets/567a3240-95f9-4b63-ab7f-7dc033ed9ad6" />
+<img width="322" height="188" alt="изображение" src="https://github.com/user-attachments/assets/c1457cc3-ec81-4921-a176-a3ee6626d6c9" /><br>
+<img width="608" height="323" alt="изображение" src="https://github.com/user-attachments/assets/5ecb571e-e96a-42d6-912d-84955c8bdb65" />## 
 
 Для перебора использован Intruder в BurpSuite:
 
@@ -155,3 +155,48 @@ http://localhost:8080/vulnerabilities/csrf/?password_new=hacked&password_conf=ha
 - Бесконтрольная загрузка файлов ✅  
 
 ---
+
+## Неправильная конфигурация и устаревшие компоненты
+
+Далее перешел по пути http://127.0.0.1:8080/phpinfo.php, и узнал какая версия php, какие модули и пути заданы на сайте, что, по сути, можно посчитать служебной утечкой:
+
+<img width="723" height="440" alt="изображение" src="https://github.com/user-attachments/assets/6c408ae0-08d5-4d34-b161-b0e30d313b0b" />
+
+Также через nmap можно получить информацию о версии того же Apache используемого на сайте:
+
+<img width="431" height="146" alt="изображение" src="https://github.com/user-attachments/assets/d06470cc-3d3f-49b1-a3c3-d2c50ed62964" /><br>
+<img width="541" height="214" alt="изображение" src="https://github.com/user-attachments/assets/42c6b8ad-38a3-4c93-8e7c-e190e5a84cd4" />
+
+Зная версию веб-сервиса и его фреймворков, можно подобрать известные уязвимости, также nmap-ом - nmap -sV --script vuln -p 7070 localhost:
+
+<img width="386" height="210" alt="изображение" src="https://github.com/user-attachments/assets/f442704c-e13b-44f4-98c0-f8d63efc11ea" />
+
+## Ошибки логирования и мониторинга
+
+После всех проведенных атак и подозрительной для обычного пользователя деятельности в логах сайта должно было что-то сохраниься:
+
+<img width="713" height="438" alt="изображение" src="https://github.com/user-attachments/assets/cbb238af-1417-4628-9a7a-03452a79051b" />
+
+Однако проанализировав логи, можно прийти к заключению, что это обычные web-логи запросов, а не полноценные записи о событиях безопасности или атаках. То есть это значит:
+
+- нет логирования атак  
+- нет детекта  
+- нет предупреждений  
+- нет реакции системы  
+
+---
+
+## Итог
+
+- Нарушение контроля доступа ✅  
+- Сбои в криптографии ✅  
+- Внедрение кода ✅  
+- Небезопасный дизайн ✅  
+- Неправильная конфигурация ✅  
+- Уязвимые и устаревшие компоненты ✅  
+- Ошибки идентификации и аутентификации ✅  
+- Нарушение целостности данных и ПО ✅  
+- Ошибки логирования и мониторинга ✅  
+- Подделка запросов ✅  
+- Брутфорс ✅  
+- Бесконтрольная загрузка файлов ✅  
