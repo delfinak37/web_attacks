@@ -169,7 +169,7 @@
 
 Также через nmap можно получить информацию о версии того же Apache используемого на сайте:
 
-<img width="431" height="146" alt="изображение" src="https://github.com/user-attachments/assets/d06470cc-3d3f-49b1-a3c3-d2c50ed62964" />
+<img width="431" height="146" alt="изображение" src="https://github.com/user-attachments/assets/d06470cc-3d3f-49b1-a3c3-d2c50ed62964" /><br>
   
 <img width="541" height="214" alt="изображение" src="https://github.com/user-attachments/assets/42c6b8ad-38a3-4c93-8e7c-e190e5a84cd4" />
 
