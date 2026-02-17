@@ -16,7 +16,7 @@
 
 ## Ход работы
 
-Выполнение работы производилось в DVWA с BurpSuite по адресу: 'http://localhost:8080' ('http://localhost:7070')
+Выполнение работы производилось в DVWA с BurpSuite по адресу: `http://localhost:8080` (`http://localhost:7070`)
 
 
 ### SQL-инъекция (Внедрение кода)
@@ -113,11 +113,11 @@
 
 Перехватился GET-запрос с низкой защитой, также есть новым паролем, который ввел пользователь. Еще обнаружена прямая ссылка на смену пароля:
 
-'/vulnerabilities/csrf/?password_new=123456&password_conf=123456&Change=Change'
+`/vulnerabilities/csrf/?password_new=123456&password_conf=123456&Change=Change`
 
 Заменив параметры на свои и перейдя по ней:
 
-'http://localhost:8080/vulnerabilities/csrf/?password_new=hacked&password_conf=hacked&Change=Change'
+`http://localhost:8080/vulnerabilities/csrf/?password_new=hacked&password_conf=hacked&Change=Change`
 
 Пароль изменится на hacked без какого-либо подтверждения:
 
