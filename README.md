@@ -25,12 +25,8 @@
 
 Ввел в поле значение `1` для перехвата запроса в BurpSuite:
 
-<div align="center">
-  <img width="362" height="193" alt="изображение" src="https://github.com/user-attachments/assets/994983a1-ce82-4cf8-87e6-7d2d11e8a5e3" />
-</div><br>
-<div align="center">
-  <img width="532" height="458" alt="изображение" src="https://github.com/user-attachments/assets/422e1e2c-ae25-4533-a69b-1d8c192be95c" />
-</div>
+<img width="362" height="193" alt="изображение" src="https://github.com/user-attachments/assets/994983a1-ce82-4cf8-87e6-7d2d11e8a5e3" /><br>
+<img width="532" height="458" alt="изображение" src="https://github.com/user-attachments/assets/422e1e2c-ae25-4533-a69b-1d8c192be95c" />
 
 Из запроса можно понять, что:
 - параметр передается через GET  
@@ -39,21 +35,15 @@
 
 Выполнил SQL-инъекцию, заменив 'id=1" на  "id=1' OR '1=1':
 
-<div align="center">
-  <img width="509" height="69" alt="изображение" src="https://github.com/user-attachments/assets/581fc173-9bc9-4f94-abd7-d41d3946d8fa" />
-</div>
+<img width="509" height="69" alt="изображение" src="https://github.com/user-attachments/assets/581fc173-9bc9-4f94-abd7-d41d3946d8fa" />
 
 В результате был получен ответ со всеми пользователями базы данных:
 
-<div align="center">
-  <img width="364" height="353" alt="изображение" src="https://github.com/user-attachments/assets/37578c97-312c-45f2-adeb-a91beffd6886" />
-</div>
+<img width="364" height="353" alt="изображение" src="https://github.com/user-attachments/assets/37578c97-312c-45f2-adeb-a91beffd6886" />
 
 ---
 
 ### Текущий прогресс
-
-<div align="center">
 
 | Уязвимость | Статус |
 |------------|:------:|
@@ -70,53 +60,32 @@
 | Брутфорс |  |
 | Бесконтрольная загрузка файлов |  |
 
-</div>
-
 ---
 
 ## Бесконтрольная загрузка файлов
 
 Была выполнена атака загрузки файлов. Загружен обычный файл:
 
-<div align="center">
-  <img width="302" height="138" alt="изображение" src="https://github.com/user-attachments/assets/4d92432a-3440-4516-94d3-653ecb86f541" />
-</div>
+<img width="302" height="138" alt="изображение" src="https://github.com/user-attachments/assets/4d92432a-3440-4516-94d3-653ecb86f541" />
 
 Перехват POST-запроса показал, что сервер принимает `multipart/form-data`:
 
-<div align="center">
-  <img width="455" height="444" alt="изображение" src="https://github.com/user-attachments/assets/487abc8c-e706-442f-96ed-b68561d5e9f1" />
-</div>
+<img width="455" height="444" alt="изображение" src="https://github.com/user-attachments/assets/487abc8c-e706-442f-96ed-b68561d5e9f1" />
 
 Создал простой PHP-файл:
 
-<div align="center">
-  <img width="274" height="60" alt="изображение" src="https://github.com/user-attachments/assets/ebc80d9e-aede-468f-834c-5444c8086a20" />
-</div>
+<img width="274" height="60" alt="изображение" src="https://github.com/user-attachments/assets/ebc80d9e-aede-468f-834c-5444c8086a20" />
 
 После загрузки файл был успешно исполнен на сервере:
 
-<div align="center">
-  <img width="532" height="112" alt="изображение" src="https://github.com/user-attachments/assets/7e4553e3-4496-4e09-9749-5b5269190112" />
-</div>
-
-<div align="center">
-  <img width="533" height="110" alt="изображение" src="https://github.com/user-attachments/assets/df439d2a-353a-4e25-ab69-f33113832c25" />
-</div>
-
-<div align="center">
-  <img width="516" height="121" alt="изображение" src="https://github.com/user-attachments/assets/c6268fb1-8e57-492e-b166-e1ab6a523327" />
-</div>
-
-<div align="center">
-  <img width="523" height="121" alt="изображение" src="https://github.com/user-attachments/assets/17ca443b-27d4-4a63-b6fc-585b32ec8910" />
-</div>
+<img width="532" height="112" alt="изображение" src="https://github.com/user-attachments/assets/7e4553e3-4496-4e09-9749-5b5269190112" /><br>
+<img width="533" height="110" alt="изображение" src="https://github.com/user-attachments/assets/df439d2a-353a-4e25-ab69-f33113832c25" /><br>
+<img width="516" height="121" alt="изображение" src="https://github.com/user-attachments/assets/c6268fb1-8e57-492e-b166-e1ab6a523327" /><br>
+<img width="523" height="121" alt="изображение" src="https://github.com/user-attachments/assets/17ca443b-27d4-4a63-b6fc-585b32ec8910" />
 
 ---
 
 ### Текущий прогресс
-
-<div align="center">
 
 | Уязвимость | Статус |
 |------------|:------:|
@@ -132,8 +101,6 @@
 | Подделка запросов |  |
 | Брутфорс |  |
 | Бесконтрольная загрузка файлов | ✅ |
-
-</div>
 
 ---
 
