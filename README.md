@@ -25,21 +25,30 @@
 
 Ввел в поле значение `1` для перехвата запроса в BurpSuite:
 
-<img width="362" height="193" alt="изображение" src="https://github.com/user-attachments/assets/994983a1-ce82-4cf8-87e6-7d2d11e8a5e3" /><br>
-<img width="532" height="458" alt="изображение" src="https://github.com/user-attachments/assets/422e1e2c-ae25-4533-a69b-1d8c192be95c" />
+<div align="center">
+  <img width="362" height="193" alt="изображение" src="https://github.com/user-attachments/assets/994983a1-ce82-4cf8-87e6-7d2d11e8a5e3" />
+</div>
+
+<div align="center">
+  <img width="532" height="458" alt="изображение" src="https://github.com/user-attachments/assets/422e1e2c-ae25-4533-a69b-1d8c192be95c" />
+</div>
 
 Из запроса можно понять, что:
 - параметр передается через GET  
 - параметр называется `id`  
 - отсутствует какая-либо защита  
 
-Выполнил SQL-инъекцию, заменив "id=1" на  "id=1' OR '1=1":
+Выполнил SQL-инъекцию, заменив 'id=1" на  "id=1' OR '1=1':
 
-<img width="509" height="69" alt="изображение" src="https://github.com/user-attachments/assets/581fc173-9bc9-4f94-abd7-d41d3946d8fa" />
+<div align="center">
+  <img width="509" height="69" alt="изображение" src="https://github.com/user-attachments/assets/581fc173-9bc9-4f94-abd7-d41d3946d8fa" />
+</div>
 
 В результате был получен ответ со всеми пользователями базы данных:
 
-<img width="364" height="353" alt="изображение" src="https://github.com/user-attachments/assets/37578c97-312c-45f2-adeb-a91beffd6886" />
+<div align="center">
+  <img width="364" height="353" alt="изображение" src="https://github.com/user-attachments/assets/37578c97-312c-45f2-adeb-a91beffd6886" />
+</div>
 
 ---
 
@@ -64,22 +73,39 @@
 
 Была выполнена атака загрузки файлов. Загружен обычный файл:
 
-<img width="302" height="138" alt="изображение" src="https://github.com/user-attachments/assets/4d92432a-3440-4516-94d3-653ecb86f541" />
+<div align="center">
+  <img width="302" height="138" alt="изображение" src="https://github.com/user-attachments/assets/4d92432a-3440-4516-94d3-653ecb86f541" />
+</div>
 
 Перехват POST-запроса показал, что сервер принимает `multipart/form-data`:
 
-<img width="455" height="444" alt="изображение" src="https://github.com/user-attachments/assets/487abc8c-e706-442f-96ed-b68561d5e9f1" />
+<div align="center">
+  <img width="455" height="444" alt="изображение" src="https://github.com/user-attachments/assets/487abc8c-e706-442f-96ed-b68561d5e9f1" />
+</div>
 
 Создал простой PHP-файл:
 
-<img width="274" height="60" alt="изображение" src="https://github.com/user-attachments/assets/ebc80d9e-aede-468f-834c-5444c8086a20" />
+<div align="center">
+  <img width="274" height="60" alt="изображение" src="https://github.com/user-attachments/assets/ebc80d9e-aede-468f-834c-5444c8086a20" />
+</div>
 
 После загрузки файл был успешно исполнен на сервере:
 
-<img width="532" height="112" alt="изображение" src="https://github.com/user-attachments/assets/7e4553e3-4496-4e09-9749-5b5269190112" />
-<img width="533" height="110" alt="изображение" src="https://github.com/user-attachments/assets/df439d2a-353a-4e25-ab69-f33113832c25" />
-<img width="516" height="121" alt="изображение" src="https://github.com/user-attachments/assets/c6268fb1-8e57-492e-b166-e1ab6a523327" />
-<img width="523" height="121" alt="изображение" src="https://github.com/user-attachments/assets/17ca443b-27d4-4a63-b6fc-585b32ec8910" />
+<div align="center">
+  <img width="532" height="112" alt="изображение" src="https://github.com/user-attachments/assets/7e4553e3-4496-4e09-9749-5b5269190112" />
+</div>
+
+<div align="center">
+  <img width="533" height="110" alt="изображение" src="https://github.com/user-attachments/assets/df439d2a-353a-4e25-ab69-f33113832c25" />
+</div>
+
+<div align="center">
+  <img width="516" height="121" alt="изображение" src="https://github.com/user-attachments/assets/c6268fb1-8e57-492e-b166-e1ab6a523327" />
+</div>
+
+<div align="center">
+  <img width="523" height="121" alt="изображение" src="https://github.com/user-attachments/assets/17ca443b-27d4-4a63-b6fc-585b32ec8910" />
+</div>
 
 ---
 
@@ -105,8 +131,13 @@
 
 Была проведена разведка:
 
-<img width="485" height="172" alt="изображение" src="https://github.com/user-attachments/assets/e33ee834-b4b6-46d3-8725-c362de96b50e" />
-<img width="651" height="276" alt="изображение" src="https://github.com/user-attachments/assets/e08eaea6-92e8-4153-a028-52ede67c36f6" />
+<div align="center">
+  <img width="485" height="172" alt="изображение" src="https://github.com/user-attachments/assets/e33ee834-b4b6-46d3-8725-c362de96b50e" />
+</div>
+
+<div align="center">
+  <img width="651" height="276" alt="изображение" src="https://github.com/user-attachments/assets/e08eaea6-92e8-4153-a028-52ede67c36f6" />
+</div>
 
 Перехватился GET-запрос с низкой защитой, также есть новым паролем, который ввел пользователь. Еще обнаружена прямая ссылка на смену пароля:
 
@@ -118,7 +149,9 @@ http://localhost:8080/vulnerabilities/csrf/?password_new=hacked&password_conf=ha
 
 Пароль изменится на hacked без какого-либо подтверждения:
 
-<img width="608" height="321" alt="изображение" src="https://github.com/user-attachments/assets/ef279b44-bfe9-4995-b8dd-959157bdcf8d" />
+<div align="center">
+  <img width="608" height="321" alt="изображение" src="https://github.com/user-attachments/assets/ef279b44-bfe9-4995-b8dd-959157bdcf8d" />
+</div>
 
 В реальности же злоумышленник создаёт вредоносную страницу. И если жертва авторизована и открывает эту страницу, то пароль меняется автоматически.
 
@@ -126,16 +159,25 @@ http://localhost:8080/vulnerabilities/csrf/?password_new=hacked&password_conf=ha
 
 Следующим шагом решил выполнил BruteForce атаку. Произвел разведку системы. В GET-запросе отсутствуют механизмы защиты:
 
-<img width="322" height="188" alt="изображение" src="https://github.com/user-attachments/assets/c1457cc3-ec81-4921-a176-a3ee6626d6c9" /><br>
-<img width="608" height="323" alt="изображение" src="https://github.com/user-attachments/assets/5ecb571e-e96a-42d6-912d-84955c8bdb65" />## 
+<div align="center">
+  <img width="322" height="188" alt="изображение" src="https://github.com/user-attachments/assets/c1457cc3-ec81-4921-a176-a3ee6626d6c9" />
+</div>
+
+<div align="center">
+  <img width="608" height="323" alt="изображение" src="https://github.com/user-attachments/assets/5ecb571e-e96a-42d6-912d-84955c8bdb65" />
+</div>
 
 Для перебора использован Intruder в BurpSuite:
 
-<img width="511" height="428" alt="изображение" src="https://github.com/user-attachments/assets/cd66679e-ed51-430d-b217-0109b940ff14" />
+<div align="center">
+  <img width="511" height="428" alt="изображение" src="https://github.com/user-attachments/assets/cd66679e-ed51-430d-b217-0109b940ff14" />
+</div>
 
 Для фильтрации верной комбинации был указан параметр: Welcome to the password protected area – это строка, которая появляется после успешного входа в систему. При переборе предполагаемых логинов и паролей вышло только одно совпадение, которое и являлось верной комбинацией.
 
-<img width="720" height="244" alt="изображение" src="https://github.com/user-attachments/assets/5faf7552-53b6-47e9-915e-d1231d9a53f1" />
+<div align="center">
+  <img width="720" height="244" alt="изображение" src="https://github.com/user-attachments/assets/5faf7552-53b6-47e9-915e-d1231d9a53f1" />
+</div>
 
 ---
 
@@ -160,22 +202,33 @@ http://localhost:8080/vulnerabilities/csrf/?password_new=hacked&password_conf=ha
 
 Далее перешел по пути http://127.0.0.1:8080/phpinfo.php, и узнал какая версия php, какие модули и пути заданы на сайте, что, по сути, можно посчитать служебной утечкой:
 
-<img width="723" height="440" alt="изображение" src="https://github.com/user-attachments/assets/6c408ae0-08d5-4d34-b161-b0e30d313b0b" />
+<div align="center">
+  <img width="723" height="440" alt="изображение" src="https://github.com/user-attachments/assets/6c408ae0-08d5-4d34-b161-b0e30d313b0b" />
+</div>
 
 Также через nmap можно получить информацию о версии того же Apache используемого на сайте:
 
-<img width="431" height="146" alt="изображение" src="https://github.com/user-attachments/assets/d06470cc-3d3f-49b1-a3c3-d2c50ed62964" /><br>
-<img width="541" height="214" alt="изображение" src="https://github.com/user-attachments/assets/42c6b8ad-38a3-4c93-8e7c-e190e5a84cd4" />
+<div align="center">
+  <img width="431" height="146" alt="изображение" src="https://github.com/user-attachments/assets/d06470cc-3d3f-49b1-a3c3-d2c50ed62964" />
+</div>
+
+<div align="center">
+  <img width="541" height="214" alt="изображение" src="https://github.com/user-attachments/assets/42c6b8ad-38a3-4c93-8e7c-e190e5a84cd4" />
+</div>
 
 Зная версию веб-сервиса и его фреймворков, можно подобрать известные уязвимости, также nmap-ом - nmap -sV --script vuln -p 7070 localhost:
 
-<img width="386" height="210" alt="изображение" src="https://github.com/user-attachments/assets/f442704c-e13b-44f4-98c0-f8d63efc11ea" />
+<div align="center">
+  <img width="386" height="210" alt="изображение" src="https://github.com/user-attachments/assets/f442704c-e13b-44f4-98c0-f8d63efc11ea" />
+</div>
 
 ## Ошибки логирования и мониторинга
 
 После всех проведенных атак и подозрительной для обычного пользователя деятельности в логах сайта должно было что-то сохраниься:
 
-<img width="713" height="438" alt="изображение" src="https://github.com/user-attachments/assets/cbb238af-1417-4628-9a7a-03452a79051b" />
+<div align="center">
+  <img width="713" height="438" alt="изображение" src="https://github.com/user-attachments/assets/cbb238af-1417-4628-9a7a-03452a79051b" />
+</div>
 
 Однако проанализировав логи, можно прийти к заключению, что это обычные web-логи запросов, а не полноценные записи о событиях безопасности или атаках. То есть это значит:
 
@@ -200,3 +253,5 @@ http://localhost:8080/vulnerabilities/csrf/?password_new=hacked&password_conf=ha
 - Подделка запросов ✅  
 - Брутфорс ✅  
 - Бесконтрольная загрузка файлов ✅  
+
+---
