@@ -47,5 +47,6 @@
 В результате анализа выявлена уязвимость класса SQL-инъекция в эндпоинте `/api/products/views`. 
 Отсутствие фильтрации входных данных в заголовке `x-product-name` позволяет нарушить структуру SQL-запроса, что подтверждается ошибкой при внедрении одинарной кавычки. 
 Успешная эксплуатация привела к раскрытию внутренней структуры приложения через поле `location` с абсолютным путем к файлу на сервере. 
-Данная атака классифицируется как **CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')**.
+
+Данная атака классифицируется как **CWE-89: Improper Neutralization of Special Elements used in an SQL Command** (SQL-Injection).
 
