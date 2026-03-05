@@ -11,7 +11,7 @@
 
 Для анализа был выбран модуль Brute Force в DVWA. При попытке входа с произвольными данными был перехвачен HTTP-запрос с помощью Burp Suite:
 
-<img width="322" height="188" alt="Форма входа" src="https://github.com/user-attachments/assets/c1457cc3-ec81-4921-a176-a3ee6626d6c9" />
+<img width="322" height="188" alt="Форма входа" src="https://github.com/user-attachments/assets/c1457cc3-ec81-4921-a176-a3ee6626d6c9" /><dr>
 
 <img width="608" height="323" alt="изображение" src="https://github.com/user-attachments/assets/5ecb571e-e96a-42d6-912d-84955c8bdb65" />
 
