@@ -1,4 +1,4 @@
-<img width="1096" height="734" alt="изображение" src="https://github.com/user-attachments/assets/eb81fce0-e3ec-4b38-bbda-a4546ee69da8" /># Неправильная конфигурация (Security Misconfiguration)
+# Неправильная конфигурация (Security Misconfiguration)
 
 ### Цель работы
 
@@ -69,7 +69,7 @@
 </html>
 ```
 
-<img width="1094" height="781" alt="изображение" src="https://github.com/user-attachments/assets/7762f1c2-f7aa-4855-a738-687583fc9f29" />
+<img width="1096" height="734" alt="изображение" src="https://github.com/user-attachments/assets/eb81fce0-e3ec-4b38-bbda-a4546ee69da8" />
 
 ### 3) Эксплуатация
 
