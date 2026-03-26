@@ -69,7 +69,7 @@
 </html>
 ```
 
-<img width="1096" height="734" alt="изображение" src="https://github.com/user-attachments/assets/eb81fce0-e3ec-4b38-bbda-a4546ee69da8" />
+<img width="1092" height="774" alt="изображение" src="https://github.com/user-attachments/assets/7758cc66-f4ad-441f-9364-6e33d44f48b3" />
 
 ### 3) Эксплуатация
 
