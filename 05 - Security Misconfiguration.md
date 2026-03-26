@@ -1,0 +1,1 @@
+# Неправильная конфигурация (Security Misconfiguration)
